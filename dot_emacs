@@ -1,6 +1,10 @@
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'tramp)
-(set-default 'tramp-default-method "plink")
+(require 'package) 
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
 
 (prefer-coding-system 'utf-8-unix)
 
@@ -13,20 +17,9 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;;(nyan-mode 1)
 
-(require 'undo-tree)
-(global-undo-tree-mode 1)
-
-
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
-(ac-config-default)
-
-(add-to-list 'load-path "~/.emacs.d/lisp/nyan-mode/")
-(require 'nyan-mode)
-(nyan-mode 1)
-
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (require 'recentf)
 (setq recentf-auto-cleanup 'never)
@@ -35,40 +28,39 @@
 
 (desktop-save-mode 1)
 
-
-(require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-
-
-(setq org-agenda-files (list "~/org/work.org"))
-
-
-(require 'package) 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-
 (require 'evil)
 (evil-mode 1)
 
 (require 'helm-config)
 (helm-mode 1)
 
-(require 'vi-tilde-fringe)
-(vi-tilde-fringe-mode 1)
-
 (require 'smartparens)
 (smartparens-mode 1)
+(setq tramp-default-method "scp")
+
+
+(require 'powerline)
+(powerline-default-theme)
 
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (wombat)))
+ '(golden-ratio-mode t)
  '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (magit powerline smartparens pomodoro nyan-mode helm golden-ratio go-mode evil)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
-(custom-set-faces) 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+ 
