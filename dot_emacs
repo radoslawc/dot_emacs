@@ -28,6 +28,7 @@
 (require 'powerline)
 (powerline-default-theme)
 
+<<<<<<< Updated upstream
 (require 'golden-ratio)
 (golden-ratio-mode t)
 
@@ -48,19 +49,32 @@
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+=======
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+>>>>>>> Stashed changes
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (grandshell)))
+ '(custom-safe-themes
+   (quote
+    ("f0d8af755039aa25cd0792ace9002ba885fd14ac8e8807388ab00ec84c9497d7" default)))
  '(golden-ratio-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (magit powerline smartparens pomodoro nyan-mode helm golden-ratio go-mode evil)))
+    (grandshell-theme auto-complete w3m magit powerline smartparens pomodoro nyan-mode helm golden-ratio go-mode evil)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
