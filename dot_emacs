@@ -5,39 +5,35 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-
 (prefer-coding-system 'utf-8-unix)
 
 (require 'saveplace)
 (setq-default save-place t)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key "\C-xf" 'helm-find-files)
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;;(nyan-mode 1)
-
-(setq magit-last-seen-setup-instructions "1.4.0")
-
 (require 'recentf)
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
-(global-set-key "\C-xf" 'recentf-open-files)
 
 (desktop-save-mode 1)
 
 (require 'evil)
-(evil-mode 1)
+;;(evil-mode 1)
 
 (require 'helm-config)
 (helm-mode 1)
 
 (require 'smartparens)
 (smartparens-mode 1)
-(setq tramp-default-method "scp")
 
+(setq tramp-default-method "scp")
 
 (require 'powerline)
 (powerline-default-theme)
@@ -65,7 +61,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-solarized grandshell-theme auto-complete w3m powerline smartparens pomodoro nyan-mode helm golden-ratio go-mode evil)))
+    (color-theme-sanityinc-solarized grandshell-theme auto-complete w3m powerline smartparens nyan-mode helm golden-ratio evil)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
