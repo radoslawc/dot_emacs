@@ -44,6 +44,16 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
+;;execute script in org file with C-c C-c
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh         . t)
+   (emacs-lisp . t)
+   (python     . t)
+   (plantuml   . t)))
+
+(setq org-src-fontify-natively t)
+(setq org-confirm-babel-evaluate nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -61,7 +71,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-solarized grandshell-theme auto-complete w3m powerline smartparens nyan-mode helm golden-ratio evil)))
+    (company color-theme-sanityinc-solarized grandshell-theme auto-complete w3m powerline smartparens nyan-mode helm golden-ratio evil)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
